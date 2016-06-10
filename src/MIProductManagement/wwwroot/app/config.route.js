@@ -2,8 +2,8 @@
     'use strict';
     var routeProvider = function ($routeProvider, $locationProvider) {
 
-        var viewBase = '/app/components/';
-        var viewcommonBase = '/app/common/';
+        var viewBase = '/app/components';
+        var viewcommonBase = '/app/common';
 
         $routeProvider.when('/index', {
             controller: 'IndexController',
@@ -12,6 +12,10 @@
         }).when('/login', {
             controller: 'LoginController',
             templateUrl: viewcommonBase + '/login/login.html',
+            controllerAs: 'vm'
+        }).when('/products', {
+            controller: 'ProductController',
+            templateUrl: viewBase + '/product/product.html',
             controllerAs: 'vm'
         }).otherwise({ redirectTo: '/' });
     }

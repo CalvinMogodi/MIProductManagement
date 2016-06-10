@@ -1,0 +1,33 @@
+﻿<md-dialog ng-cloak class="large">
+    <md-toolbar class="color-blue md-title-header-bar" style="width:100%!important">
+        <div class="md-toolbar-tools">
+            <h2>Create New Project</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeModal()">
+                <md-icon md-font-icon="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="vm.createProject">
+            <div layout-gt-md="row" layout-md="column">
+                <div flex>
+                    <md-input-container class="md-block">
+                        <label>Product Description</label>
+                        <input ng-model="product.description" required name="productDescription" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                    </md-input-container>
+                </div>
+            </div>
+        </form>
+        <md-content class="md-padding">
+            <div layout="row">
+                <div flex="50" layout="column" layout-align="start start">
+                    <md-button class="md-primary md-primary-custom" ng-click="closeModal()">Cancel</md-button>
+                </div>
+                <div flex="50" layout="row" layout-align="end end">
+                    <md-button class="md-primary md-primary-custom" ng-click="createProduct(product)">Save</md-button>
+                </div>
+            </div>
+        </md-content>
+    </md-content>
+</md-dialog>
