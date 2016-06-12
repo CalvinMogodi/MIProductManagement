@@ -747,8 +747,8 @@ fieldset[disabled] .ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button.
 }
 @font-face {
   font-family: 'ui-grid';
-  /*src: url('../font/icons/ui-grid.eot');*/
-  src: url('../fonts/icons/ui-grid.eot#iefix') format('eot'), url('../fonts/icons/ui-grid.woff') format('woff'), url('../fonts/icons/ui-grid.ttf') format('ttf'), url('../fonts/icons/ui-grid.svg?#ui-grid') format('svg');
+  src: url('../font/icons/ui-grid.eot');
+  src: url('../font/icons/ui-grid.eot#iefix') format('eot'), url('../font/icons/ui-grid.woff') format('woff'), url('../font/icons/ui-grid.ttf') format('ttf'), url('../font/icons/ui-grid.svg?#ui-grid') format('svg');
   font-weight: normal;
   font-style: normal;
 }

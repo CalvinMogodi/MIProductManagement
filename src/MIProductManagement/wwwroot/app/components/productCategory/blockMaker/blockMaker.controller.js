@@ -43,18 +43,10 @@
                     '<md-button class="md-icon-button" ng-click="grid.appScope.vm.deleteRecord(row.entity)"><md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon></md-button>' 
                 }
             ],
-
-            enablePaging: true,
-            showFooter: true,
-            totalServerItems: 'totalServerItems',
-            pagingOptions: $scope.pagingOptions,
-            filterOptions: $scope.filterOptions,
-
-            enableScrollbars: false, 
+            
             enableColumnMenus: false,
-            //enableHorizontalScrollbar: 1,
-            //enableVerticalScrollbar: 1,
-           
+            enableVerticalScrollbar: 0,
+            enableHorizontalScrollbar: 0,
             exporterCsvColumnSeparator: ';',
             enableGridMenu: true,
             enableSelectAll: false,
@@ -87,7 +79,6 @@
             $scope.gridOptions.data = vm.blockMakers;           
             ProductCategoryService.loadProducts('blockMaker');
             vm.products = ProductCategoryService.products;
-            //$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
         }
 
         $scope.filterOptions = {
