@@ -1,0 +1,102 @@
+﻿.ui-grid-top-panel{
+    background: @light-gray;
+}
+
+.ui-grid-cell-contents {
+    span{
+        color: @text-nav;
+        font-weight: 400;
+        font-size: 12px;
+
+    }
+
+}
+.ui-grid-render-container{
+    :focus{
+        outline: none!important;
+        box-shadow: none!important;
+        outline: none!important;
+    }
+}
+.ui-grid-column-menu-button {
+    top: 3px;
+    &:hover{
+        color: @blue;
+    }
+}
+
+.ui-grid-menu-button .ui-grid-icon-container {
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: -2px;
+    font-size: 13px;
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul li button {
+    font-size: 11px;
+}
+.ui-grid-menu .ui-grid-menu-inner ul li button:hover,
+.ui-grid-menu .ui-grid-menu-inner ul li button:focus {
+    box-shadow: none;
+    background-color: @light-blue;
+    color: @text-dark;
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul {
+    background-color: @white;
+}
+
+.ui-grid-menu .ui-grid-menu-inner ul li button.ui-grid-menu-item-active {
+    box-shadow: none;
+    background-color: @light-blue;
+}
+
+.ui-grid-menu .ui-grid-menu-inner .ui-grid-menu-close-button {
+    display: none;
+}
+
+
+
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid {
+    overflow-x: hidden;
+}
+
+
+.ui-grid-menu-button {
+    background: @light-gray;
+    border: none;
+}
+
+.ui-grid-cell-contents {
+    padding: 6px;
+    color: @text-dark;
+    font-size: 13px;
+}
+
+
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-add,
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove {
+  transition: none;
+}
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-add.ng-hide-add-active,
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove {
+  transform: none;
+}
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-add,
+.ui-grid-column-menu .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove.ng-hide-remove-active {
+transform: none;
+}
+/* Slide up/down animations */
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid.ng-hide-add,
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove {
+    transition: none;
+  display: block !important;
+}
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid.ng-hide-add.ng-hide-add-active,
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove {
+  transform: none;
+}
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid.ng-hide-add,
+.ui-grid-menu-button .ui-grid-menu .ui-grid-menu-mid.ng-hide-remove.ng-hide-remove-active {
+  transform: none;
+}

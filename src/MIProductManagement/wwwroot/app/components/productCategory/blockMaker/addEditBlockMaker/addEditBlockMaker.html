@@ -1,0 +1,45 @@
+﻿<md-dialog ng-cloak class="large">
+    <md-toolbar class="color-blue md-title-header-bar" style="width:100%!important">
+        <div class="md-toolbar-tools">
+            <h2 ng-if="isEdit == false">New</h2>
+            <h2 ng-if="isEdit == true">Edit</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeModal()">
+                <md-icon md-font-icon="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <form name="vm.blockMakerForm">
+            <div layout-gt-md="row" layout-md="column">
+                <div flex>
+                    <md-input-container class="md-block">
+                            <label>Select Product</label>
+                            <md-select ng-model="blockMaker.productDesricption" required>
+                                <md-option value="{{product.description}}" ng-repeat="product in products">{{product.description}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Total</label>
+                            <input ng-model="blockMaker.total" required name="total" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Used</label>
+                            <input ng-model="blockMaker.used" required name="used" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                        </md-input-container>
+</div>
+            </div>
+        </form>
+        <md-content class="md-padding">
+            <div layout="row">
+                <div flex="50" layout="column" layout-align="start start">
+                    <md-button class="md-primary md-primary-custom" ng-click="closeModal()">Cancel</md-button>
+                </div>
+                <div flex="50" layout="row" layout-align="end end">
+                    <md-button class="md-primary md-primary-custom" ng-if="isEdit == false" ng-click="create(blockMaker)">Add</md-button>
+                    <md-button class="md-primary md-primary-custom" ng-if="isEdit == true" ng-click="Update(blockMaker)">Update</md-button>
+                </div>
+            </div>
+        </md-content>
+    </md-content>
+</md-dialog>

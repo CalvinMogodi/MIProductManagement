@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Marche International Product Management</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link href="assets/css/styles.min.css" rel="stylesheet" />
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link href="assets/css/ui-grid.css" rel="stylesheet" />
 </head>
 <body ng-controller="indexController" ng-class="{'md-login' : currentUrl === '/login'}">
     <div class="md-home-toolbar md-padding" layout="row" ng-hide="currentUrl === '/login'">
@@ -36,9 +38,19 @@
                 </md-menu-sidenav>
 
                 <md-menu-sidenav>
+                    <md-menu-sidenav-item>
                         <md-menu-sidenav-title>
-                            <h1 class="md-body-2" flex><span><md-icon>code</md-icon></span>Products test</h1>
+                            <h1 class="md-body-2" flex><span><md-icon>code</md-icon></span>Product Categories</h1>
                         </md-menu-sidenav-title>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/blockMaker')">Block Maker</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/bricklayer')">Bricklayer</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/civil')">Civil</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/deliveryReport')">Delivery Report</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/fuelReport')">Fuel Report</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/machineServices')">Machine Services</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/productionAndConcreteReport')">Production & Concrete Report</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-subitem ng-click="navigateTo('/steelWorker')">Steel Worker</md-menu-sidenav-subitem>
+                    </md-menu-sidenav-item>
                 </md-menu-sidenav>
 
             </div>
@@ -86,13 +98,26 @@
 <script src="assets/js/firebase.js"></script>
 
 <!--Directives-->
+
 <!--Controllers-->
 <script src="indexcontroller.js"></script>
 <script src="app/common/login/login.controller.js"></script>
 <script src="app/components/product/product.controller.js"></script>
 <script src="app/components/product/createproduct/createproduct.controller.js"></script>
+<script src="app/components/productcategory/blockmaker/blockmaker.controller.js"></script>
+<script src="app/components/productcategory/blockmaker/addeditblockmaker/addeditblockmaker.controller.js"></script>
+
 <!--Services-->
 <script src="app/common/login/login.service.js"></script>
 <script src="app/components/product/product.service.js"></script>
+<script src="app/components/productcategory/productcategory.service.js"></script>
+
 <!--helpers-->
 <script src="app/common/helper/modal.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+<script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+<script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>

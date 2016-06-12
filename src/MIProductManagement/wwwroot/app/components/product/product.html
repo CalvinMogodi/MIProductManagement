@@ -3,12 +3,12 @@
             <md-input-container>
                 <label>Select Product Category</label>
                 <md-select ng-model="vm.productCategory" ng-change="vm.loadProducts(vm.productCategory)">
-                    <md-option value="blockMakers">Block Makers</md-option>
+                    <md-option value="blockMaker">Block Makers</md-option>
                     <md-option value="bricklayer">Bricklayer</md-option>
                     <md-option value="civil">Civil</md-option>
                     <md-option value="deliveryReport">Delivery Report</md-option>
                     <md-option value="fuelReport">Fuel Report</md-option>
-                    <md-option value="machineServices">Machine Services </md-option>
+                    <md-option value="machineServices">Machine Services</md-option>
                     <md-option value="productionAndConcreteReport">Production & Concrete Report</md-option>
                     <md-option value="steelWorker">Steel Worker</md-option>
                 </md-select>
@@ -27,7 +27,7 @@
                     <tr ng-repeat="product in  vm.products" class="hover" ng-if="vm.products.length > 0">
                         <td>{{product.description}}</td>                      
                         <td class="md-table-button">
-                            <md-button class="md-icon-button">
+                            <md-button class="md-icon-button" ng-click="vm.deleteProduct(product)">
                                 <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
                             </md-button>
                         </td>

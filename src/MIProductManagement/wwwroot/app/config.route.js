@@ -17,6 +17,10 @@
             controller: 'ProductController',
             templateUrl: viewBase + '/product/product.html',
             controllerAs: 'vm'
+        }).when('/blockMaker', {
+            controller: 'BlockMakerController',
+            templateUrl: viewBase + '/productCategory/blockMaker/blockMaker.html',
+            controllerAs: 'vm'
         }).otherwise({ redirectTo: '/' });
     }
 
