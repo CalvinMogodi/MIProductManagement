@@ -18,15 +18,15 @@
         }
 
         self.loadProducts = function (category) {
-           
-            
             self.products = [];
-            for (var i = 0; i < self.allProducts.length; i++) {
-                var product = self.allProducts[i];
-                if (category == product.category) {
-                    self.products.push(product);
+            self.allProducts.$loaded(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    var product = data[i];
+                    if (category == product.category) {
+                        self.products.push(product);
+                    }
                 }
-            }
+            });
         }
 
         return self;

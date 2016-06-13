@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function AddEditBlockMakerController(ProductCategoryService, firebaseUrl, $scope, $firebaseArray, modal, $firebaseObject) {
+    function AddEditBlockMakerController(ProductCategoryService, firebaseUrl, $scope, $firebaseArray, modal, $firebaseObject, $filter) {
         /* jshint validthis:true */
         var vm = this;
         var ref = new Firebase(firebaseUrl + "/BlockMaker");
@@ -13,13 +13,7 @@
             if ($scope.blockMaker) 
                 $scope.isEdit = true;
 
-            $scope.products = ProductCategoryService.products;
-
-            for (var i = 0; i < $scope.products.length; i++) {
-                if ($scope.blockMaker.productDesricption == $scope.products[i].description) {
-                    $scope.blockMaker.productDesricption = $scope.products[i];
-                }
-            }
+            $scope.products = ProductCategoryService.products;          
         }
 
         $scope.closeModal = function () {
@@ -28,9 +22,9 @@
 
         $scope.create = function (blockMaker) {
             var blockMakers = $firebaseArray(ref);
-            var today = new Date();
+            var today = $filter('date')(new Date(), 'yyyy-MM-dd');
             var newRecord = {
-                productDesricption: blockMaker.productDescription,
+                productDescription: blockMaker.productDescription,
                 total: blockMaker.total,
                 used: blockMaker.used,
                 createdDate: today.toString(),           
@@ -44,7 +38,7 @@
             var oldBlockMaker = $firebaseObject(editRef);
 
             oldBlockMaker.$id = blockMaker.$id;
-            oldBlockMaker.productDesricption = blockMaker.productDesricption;
+            oldBlockMaker.productDescription = blockMaker.productDescription;
             oldBlockMaker.total = blockMaker.total;
             oldBlockMaker.used = blockMaker.used;
             oldBlockMaker.createdDate = blockMaker.createdDate;
@@ -56,5 +50,5 @@
     }
 
     angular.module('MIPM').controller('AddEditBlockMakerController', AddEditBlockMakerController);
-    AddEditBlockMakerController.$inject = ['ProductCategoryService', 'firebaseUrl', '$scope', '$firebaseArray', 'modal', '$firebaseObject'];
+    AddEditBlockMakerController.$inject = ['ProductCategoryService', 'firebaseUrl', '$scope', '$firebaseArray', 'modal', '$firebaseObject', '$filter'];
 })();

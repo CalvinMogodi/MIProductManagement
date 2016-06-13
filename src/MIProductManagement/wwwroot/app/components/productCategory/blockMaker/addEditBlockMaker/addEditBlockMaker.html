@@ -15,7 +15,7 @@
                 <div flex>
                     <md-input-container class="md-block">
                             <label>Select Product</label>
-                            <md-select ng-model="blockMaker.productDesricption" required>
+                            <md-select ng-model="blockMaker.productDescription" required>
                                 <md-option value="{{product.description}}" ng-repeat="product in products">{{product.description}}</md-option>
                             </md-select>
                         </md-input-container>
@@ -27,7 +27,7 @@
                             <label>Used</label>
                             <input ng-model="blockMaker.used" required name="used" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
                         </md-input-container>
-</div>
+        </div>
             </div>
         </form>
         <md-content class="md-padding">

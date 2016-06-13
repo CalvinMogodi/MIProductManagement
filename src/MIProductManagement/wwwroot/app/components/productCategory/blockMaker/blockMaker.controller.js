@@ -8,17 +8,22 @@
 
         $scope.gridOptions = {
             columnDefs: [
-              { field: 'productDesricption', displayName: 'Product Desricption' },
-              { field: 'total', displayName: 'Total'},
-              { field: 'used', displayName: 'Used'},
+              { field: 'productDescription', displayName: 'Product Description', width: '300' },
+              { field: 'total', displayName: 'Total', width: '90' ,cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                  if (grid.getCellValue(row,col) == 1) {
+                      return 'blue';
+                  }
+                  return 'green';
+              }},
+              { field: 'used', displayName: 'Used', width: '90'},
               { field: 'createdDate', displayName: 'Date Created'},
             {
-                field: ' ', displayName: 'Actions', cellTemplate:                    
+                field: 'Actions', displayName: 'Actions', cellTemplate:
                     '<md-button class="md-icon-button" ng-click="grid.appScope.vm.editRecord(row.entity)"><md-icon md-font-icon="material-icons" class="md-font material-icons">edit</md-icon></md-button>' +
                     '<md-button class="md-icon-button" ng-click="grid.appScope.vm.deleteRecord(row.entity)"><md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon></md-button>' 
                 }
             ],
-            
+            exporterSuppressColumns: ['Actions'],
             enableColumnMenus: false,
             enableVerticalScrollbar: 0,
             enableHorizontalScrollbar: 0,
@@ -48,12 +53,41 @@
             }
         };
 
+        var addTotalToTalbe = function (results) {
+            var used = 0, total = 0;
+
+            for (var i = 0; i < results.length; i++) {
+                used = parseInt(used + parseInt(results[i].used));
+                total = parseInt(total + parseInt(results[i].total));
+            }
+
+            var emptyRow = {
+                productDescription: '',
+                total: '',
+                used: '',
+                createdDate: '',
+                Actions: '',
+            };
+            var TotalRow = {
+                productDescription: 'Total',
+                total: total,
+                used: used,
+                createdDate: '',
+                Actions: undefined,
+            };
+            results.push(emptyRow);
+            results.push(TotalRow);
+            $scope.gridOptions.data = results;
+        }
+
         init();
         function init() {
-            vm.blockMakers = $firebaseArray(ref.child('BlockMaker'));          
-            $scope.gridOptions.data = vm.blockMakers;           
-            ProductCategoryService.loadProducts('blockMaker');
-            vm.products = ProductCategoryService.products;
+            vm.blockMakers = $firebaseArray(ref.child('BlockMaker'));
+            vm.blockMakers.$loaded(function (data) {
+                addTotalToTalbe(data);
+                ProductCategoryService.loadProducts('blockMaker');
+                vm.products = ProductCategoryService.products;
+            })
         }
 
         vm.newRecord = function () {           
@@ -72,13 +106,23 @@
             modal.show(templateUrl, 'AddEditBlockMakerController').then(function () {
             });
         }
+
+        vm.export = function () {
+            $scope.export_format = 'csv';
+            if ($scope.export_format == 'csv') {
+                var myElement = angular.element(document.querySelectorAll(".custom-csv-link-location"));
+                $scope.gridApi.exporter.csvExport('all', 'all');
+            } else if ($scope.export_format == 'pdf') {
+                $scope.gridApi.exporter.pdfExport($scope.export_row_type, $scope.export_column_type);
+            };
+        };
        
         vm.filter = function (filter) {
             var list = vm.blockMakers;
             var results = [];
             if (filter.productDescription) {
                 for (var i = 0; i < list.length; i++) {
-                    if (filter.productDescription.toLowerCase() == list[i].productDesricption.toLowerCase()) {
+                    if (filter.productDescription.toLowerCase() == list[i].productDescription.toLowerCase()) {
                         results.push(list[i]);
                     }
                 }
@@ -87,12 +131,25 @@
                 for (var i = 0; i < list.length; i++) {
                     var createdDate = new Date(list[i].createdDate);
                     if (filter.fromDate <= createdDate && filter.toDate >= createdDate) {
-                        results.push(list[i]);
+                        var addItem = true;
+                        for (var j = 0; j < results.length; j++) {
+                            if (list[i].$id == results[j].$id) {
+                                addItem = false;
+                                break;
+                            }
+                        }
+                        if (addItem) {
+                            results.push(list[i]);
+                        }
+                    }
                     }
                 }
-            }          
-            $scope.gridOptions.data = results;
+            addTotalToTalbe(results);
         }
+        vm.clear = function () {
+            vm.filter = undefined;
+        }
+        
     }
 
     angular.module('MIPM').controller('BlockMakerController', BlockMakerController);

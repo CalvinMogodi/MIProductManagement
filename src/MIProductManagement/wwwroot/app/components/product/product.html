@@ -1,52 +1,53 @@
 ﻿<md-content class="main-content md-padding page-content transparent">
-    <md-content >
+    <md-content>
         <div>
-                <div flex layout-gt-md="row" layout="column">
-                    <md-input-container>
-                        <label>Select Product Category</label>
-                        <md-select ng-model="vm.productCategory" ng-change="vm.loadProducts(vm.productCategory)">
-                            <md-option value="blockMaker">Block Makers</md-option>
-                            <md-option value="bricklayer">Bricklayer</md-option>
-                            <md-option value="civil">Civil</md-option>
-                            <md-option value="deliveryReport">Delivery Report</md-option>
-                            <md-option value="fuelReport">Fuel Report</md-option>
-                            <md-option value="machineServices">Machine Services</md-option>
-                            <md-option value="productionAndConcreteReport">Production & Concrete Report</md-option>
-                            <md-option value="steelWorker">Steel Worker</md-option>
-                        </md-select>
-                    </md-input-container>
-                    <div flex="5" hide-md></div><!-- gutter -->
-                    </div>
+            <div flex layout-gt-md="row" layout="column">
+                <md-input-container>
+                    <label>Select Product Category</label>
+                    <md-select ng-model="vm.productCategory" ng-change="vm.loadProducts(vm.productCategory)">
+                        <md-option value="blockMaker">Block Makers</md-option>
+                        <md-option value="bricklayer">Bricklayer</md-option>
+                        <md-option value="civil">Civil</md-option>
+                        <md-option value="deliveryReport">Delivery Report</md-option>
+                        <md-option value="fuelReport">Fuel Report</md-option>
+                        <md-option value="machineServices">Machine Services</md-option>
+                        <md-option value="productionAndConcreteReport">Production & Concrete Report</md-option>
+                        <md-option value="steelWorker">Steel Worker</md-option>
+                    </md-select>
+                </md-input-container>
+                <div flex="5" hide-md></div><!-- gutter -->
             </div>
+        </div>
     </md-content>
-    <md-content  ng-if="vm.showProducts">
-        <md-data-table-container>
+    <md-content ng-if="vm.showProducts">
+        <md-data-table-container ng-if="vm.products.length > 0">
             <table md-data-table md-progress="deferred">
                 <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
                     <tr>
-                        <th name="Product Description"></th>                       
+                        <th name="Product Description"></th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>                   
-                    <tr ng-repeat="product in  vm.products" class="hover" ng-if="vm.products.length > 0">
-                        <td>{{product.description}}</td>                      
+                <tbody>
+                    <tr ng-repeat="product in  vm.products" class="hover">
+                        <td>{{product.description}}</td>
                         <td class="md-table-button">
                             <md-button class="md-icon-button" ng-click="vm.deleteProduct(product)">
                                 <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
                             </md-button>
                         </td>
                     </tr>
-                    <tr ng-if="vm.products == 0">
-                        <td colspan="2">No Data Found</td>
-                    </tr>
                 </tbody>
             </table>
-            <md-data-table-container>
-                <md-data-table-pagination class="margin-bottom-16" md-limit="vm.pagenation.limit" md-page="vm.pagenation.page" md-total="{{vm.products.length}}"></md-data-table-pagination>
-            </md-data-table-container>
-            <div flex layout="row" layout-align="end end">
-                <md-button class="md-primary md-primary-custom" ng-click="vm.newProduct()">New Product</md-button>
+        </md-data-table-container>
+        <div class="md-table-placeholder" layout="row" layout-align="center center" ng-if="vm.products.length == 0">
+            <div layout="column" layout-align="center center">
+                <h3 class="no-margin"><i class="material-icons">payment</i></h3>
+                <p class="no-margin md-font-size-xs"><strong>No</strong> Products</p>
             </div>
+        </div>
+        <div flex layout="row" layout-align="end end">
+            <md-button class="md-primary md-primary-custom" ng-click="vm.newProduct()">New Product</md-button>
+        </div>
     </md-content>
 </md-content>
