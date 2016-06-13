@@ -13,6 +13,10 @@
             controller: 'LoginController',
             templateUrl: viewcommonBase + '/login/login.html',
             controllerAs: 'vm'
+        }).when('/dashboard', {
+            controller: 'dashboardController',
+            templateUrl: viewBase + '/dashboard/dashboard.html',
+            controllerAs: 'vm'
         }).when('/products', {
             controller: 'ProductController',
             templateUrl: viewBase + '/product/product.html',

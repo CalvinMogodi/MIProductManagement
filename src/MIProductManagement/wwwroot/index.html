@@ -30,29 +30,35 @@
                 </div>
 
                 <md-menu-sidenav>
+                    <md-menu-sidenav-item ng-click="navigateTo('/dashboard')">
+                        <md-menu-sidenav-title>
+                            <h1  class="md-body-2" flex><span><md-icon flex="15">home</md-icon></span>Dashboard</h1>
+                        </md-menu-sidenav-title>
+                    </md-menu-sidenav-item>
                     <md-menu-sidenav-item ng-click="navigateTo('/products')">
                         <md-menu-sidenav-title>
-                            <h1 class="md-body-2" flex><span><md-icon>dashboard</md-icon></span>Add Product</h1>
+                            <h1 class="md-body-2" flex><span><md-icon flex="15">add_box</md-icon></span>Add Product</h1>
                         </md-menu-sidenav-title>
                     </md-menu-sidenav-item>
-                </md-menu-sidenav>
-
-                <md-menu-sidenav>
                     <md-menu-sidenav-item>
                         <md-menu-sidenav-title>
-                            <h1 class="md-body-2" flex><span><md-icon>code</md-icon></span>Product Categories</h1>
+                            <md-toogle-menu layout="row" flex>
+                                <h1 class="md-body-2" flex><span><md-icon flex="15">view_list</md-icon></span>Product Categories</h1>
+                                <md-icon flex="10">expand_more</md-icon>
+                            </md-toogle-menu>
                         </md-menu-sidenav-title>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/blockMaker')">Block Maker</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/bricklayer')">Bricklayer</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/civil')">Civil</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/deliveryReport')">Delivery Report</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/fuelReport')">Fuel Report</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/machineServices')">Machine Services</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/productionAndConcreteReport')">Production & Concrete Report</md-menu-sidenav-subitem>
-                        <md-menu-sidenav-subitem ng-click="navigateTo('/steelWorker')">Steel Worker</md-menu-sidenav-subitem>
+                        <md-menu-sidenav-content>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/blockMaker'); close()">Block Maker</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/bricklayer'); close()">Bricklayer</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/civil'); close()">Civil</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/deliveryReport'); close()">Delivery Report</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/fuelReport'); close()">Fuel Report</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/machineServices'); close()">Machine Services</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/productionAndConcreteReport'); close()">Production & Concrete Report</md-menu-sidenav-subitem>
+                            <md-menu-sidenav-subitem ng-click="navigateTo('/steelWorker'); close()">Steel Worker</md-menu-sidenav-subitem>
+                        </md-menu-sidenav-content>
                     </md-menu-sidenav-item>
                 </md-menu-sidenav>
-
             </div>
         </md-sidenav>
 
@@ -96,6 +102,7 @@
 <script src="app/components/product/createproduct/createproduct.controller.js"></script>
 <script src="app/components/productcategory/blockmaker/blockmaker.controller.js"></script>
 <script src="app/components/productcategory/blockmaker/addeditblockmaker/addeditblockmaker.controller.js"></script>
+<script src="app/components/dashboard/dashboard.controller.js"></script>
 
 <!--Services-->
 <script src="app/common/login/login.service.js"></script>

@@ -11851,3 +11851,6 @@ md-sidenav.md-locked-open {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn; }
 
+.grid {
+  height:auto;
+}
