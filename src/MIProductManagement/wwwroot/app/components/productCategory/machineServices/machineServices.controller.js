@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function MachineServicesController($location) {
+    function MachineServicesController($location, $firebaseArray, firebaseUrl, ProductCategoryService, modal) {
         /* jshint validthis:true */
         var vm = this;
         vm.heading = "Machine Service";
@@ -10,5 +10,5 @@
     }
 
     angular.module('MIPM').controller('MachineServicesController', MachineServicesController);
-    MachineServicesController.$inject = ['$location'];
+    MachineServicesController.$inject = ['$location', '$firebaseArray', 'firebaseUrl', 'ProductCategoryService', 'modal'];
 })();

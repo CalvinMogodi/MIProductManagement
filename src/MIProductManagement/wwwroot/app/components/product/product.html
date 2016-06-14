@@ -1,7 +1,7 @@
 ﻿<dir-page-header heading="vm.heading"
                  icon="vm.icon"
                  show-search="true"
-                 show-new-button="vm.showProduct"
+                 show-new-button="showProducts"
                  add-new-button-function="vm.newProduct()">
 </dir-page-header>
 
@@ -15,10 +15,10 @@
                         <md-option value="blockMaker">Block Makers</md-option>
                         <md-option value="bricklayer">Bricklayer</md-option>
                         <md-option value="civil">Civil</md-option>
-                        <md-option value="deliveryReport">Delivery Report</md-option>
-                        <md-option value="fuelReport">Fuel Report</md-option>
+                        <md-option value="delivery">Delivery</md-option>
+                        <md-option value="fuel">Fuel</md-option>
                         <md-option value="machineServices">Machine Services</md-option>
-                        <md-option value="productionAndConcreteReport">Production & Concrete Report</md-option>
+                        <md-option value="productionAndConcrete">Production & Concrete</md-option>
                         <md-option value="steelWorker">Steel Worker</md-option>
                     </md-select>
                 </md-input-container>
@@ -26,7 +26,7 @@
             </div>
         </div>
     </md-content>
-    <md-content ng-if="vm.showProducts">
+    <md-content ng-if="showProducts">
         <md-data-table-container ng-if="vm.products.length > 0">
             <table md-data-table md-progress="deferred">
                 <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">

@@ -1,15 +1,14 @@
 ﻿(function () {
     'use strict';
     
-    function ProductController($location,$firebaseArray, firebaseUrl, modal, ProductService) {
+    function ProductController($location, $firebaseArray, firebaseUrl, modal, ProductService, $scope) {
         var ref = new Firebase(firebaseUrl);
         var vm = this;
         vm.allProducts = [];
+        $scope.showProducts = false;
         vm.heading = "Products";
         vm.icon = "add_box";
        
-        vm.showProducts = false;
-
         init();
 
         function init() {
@@ -17,7 +16,7 @@
         }
 
         vm.loadProducts = function (productCategory) {
-            vm.showProducts = true;
+            $scope.showProducts = true;
             vm.products = [];
             for (var i = 0; i < vm.allProducts.length; i++) {
                 var product = vm.allProducts[i];
@@ -43,5 +42,5 @@
        
     }
     angular.module('MIPM').controller('ProductController', ProductController);
-    ProductController.$inject = ['$location', '$firebaseArray', 'firebaseUrl', 'modal', 'ProductService'];
+    ProductController.$inject = ['$location', '$firebaseArray', 'firebaseUrl', 'modal', 'ProductService', '$scope'];
 })();

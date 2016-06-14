@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function SteelWorkerController($location) {
+    function SteelWorkerController($location, $firebaseArray, firebaseUrl, ProductCategoryService, modal) {
         /* jshint validthis:true */
         var vm = this;
         vm.heading = "Steel Worker";
@@ -10,5 +10,5 @@
     }
 
     angular.module('MIPM').controller('SteelWorkerController', SteelWorkerController);
-    SteelWorkerController.$inject = ['$location'];
+    SteelWorkerController.$inject = ['$location', '$firebaseArray', 'firebaseUrl', 'ProductCategoryService', 'modal'];
 })();   

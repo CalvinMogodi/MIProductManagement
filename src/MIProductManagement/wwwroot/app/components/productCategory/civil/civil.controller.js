@@ -24,7 +24,7 @@
             enableVerticalScrollbar: 0,
             enableHorizontalScrollbar: 0,
             exporterCsvColumnSeparator: ';',
-            enableGridMenu: false,
+            enableGridMenu: true,
             enableSelectAll: false,
             enableSorting: true,
             exporterCsvFilename: 'Civil Report.csv',

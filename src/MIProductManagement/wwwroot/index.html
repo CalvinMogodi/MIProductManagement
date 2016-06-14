@@ -9,7 +9,7 @@
 </head>
 <body ng-controller="indexController" ng-class="{'md-login' : currentUrl === '/login'}">
    
-    <div layout="row" ng-class="{'layout-fill' : currentUrl === '/login', 'main-wrap' : currentUrl !== '/login',}">
+    <div layout="row" ng-class="{'layout-fill' : currentUrl === '/login', 'main-wrap' : currentUrl !== '/login',}" class="layout-fill">
 
         <md-sidenav md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" class="md-whiteframe-z2 md-sidenav-left gt-md-closed md-locked-open" ng-hide="currentUrl === '/login'">
             <div flex layout="column" layout-fill>
