@@ -4,7 +4,9 @@
     function BlockMakerController($location, $firebaseArray, firebaseUrl, $scope, ProductCategoryService, modal) {
         /* jshint validthis:true */
         var vm = this;
-        var ref = new Firebase(firebaseUrl);     
+        var ref = new Firebase(firebaseUrl);
+        vm.heading = "Block Maker";
+        vm.icon = "add_box";
 
         $scope.gridOptions = {
             columnDefs: [

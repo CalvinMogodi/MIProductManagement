@@ -1,0 +1,67 @@
+﻿<div>
+    <md-toolbar class="md-toolbar-custom-header">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button hide-menu-close" aria-label="Menu Toggle" ng-click="menu()">
+                <md-icon md-font-icon="material-icons">menu</md-icon>
+            </md-button>           
+            <section class="md-main-custom-search">
+                <md-chips ng-model="searchTags"
+                          placeholder="Search"
+                          secondary-placeholder="Search"
+                          readonly="false"
+                          md-on-add="search($chip)"
+                          md-on-remove="remove($chip)"
+                          ng-class="searchToggle ? 'showSearch' : 'hideSearch'">
+                </md-chips>
+            </section>
+          
+            <span flex></span>
+            <md-menu md-position-mode="target-right target">
+                <md-button class="md-icon-button" aria-label="Options" ng-click="openToolsMenu($mdOpenMenu, ev)">
+                    <md-icon md-font-icon="material-icons">more_vert</md-icon>
+                </md-button>
+                <md-menu-content width="3" class="md-functions-dropdown-sm">
+                    <md-menu-item>
+                        <md-button class="md-primary" ng-click="logout()">
+                            <md-icon md-font-icon="material-icons">reply</md-icon>Sign Out
+                        </md-button>
+                    </md-menu-item>
+
+                </md-menu-content>
+            </md-menu>
+        </div>
+
+        <div class="md-toolbar-tools md-toolbar-custom-heading">
+            <i class="material-icons">{{icon}}</i>
+            <h2>{{heading}}</h2>
+        </div>
+
+
+        <md-button ng-show="{{showNewButton}}" class="md-fab md-mini md-warn md-header-fab" aria-label="Add" ng-click="addNewButtonFunction()">
+            <md-icon md-font-icon="material-icons">add</md-icon>
+        </md-button>
+        <div class="header-tabs md-toolbar-tools" hide show-gt-sm ng-show="{{tabs}}">
+            <div ng-repeat="tab in tabs">
+                <md-button ng-class="{'md-active' : tab.active}"
+                           ng-click="tabClicked(tab)"
+                           class=""
+                           aria-label="{{tab.heading}}">
+                    {{tab.heading}}
+                    <div ng-show="{{tab.hasBadges}}"
+                         class="md-badge">
+                        <span>{{tab.badge}}</span>
+                    </div>
+                </md-button>
+            </div>
+        </div>
+        <div class="header-tabs" hide show-sm>
+            <md-select ng-model="tabs" aria-label="mobileMenu">
+                <md-option ng-repeat="tab in tabs" value="{{tab.heading}}" aria-label="{{tab.heading}}">
+                    <span ng-click="tabClicked(tab)" aria-label="{{tab.heading}}">{{tab.heading}}</span>
+                </md-option>
+            </md-select>
+        </div>
+
+
+    </md-toolbar>
+</div>

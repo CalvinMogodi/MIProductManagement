@@ -8,7 +8,7 @@
         $routeProvider.when('/index', {
             controller: 'IndexController',
             templateUrl: 'index.html',
-            controllerAs: 'vm'            
+            controllerAs: 'vm'
         }).when('/login', {
             controller: 'LoginController',
             templateUrl: viewcommonBase + '/login/login.html',
@@ -32,6 +32,26 @@
         }).when('/bricklayer', {
             controller: 'BricklayerController',
             templateUrl: viewBase + '/productCategory/bricklayer/bricklayer.html',
+            controllerAs: 'vm'
+        }).when('/delivery', {
+            controller: 'DeliveryReportController',
+            templateUrl: viewBase + '/productCategory/deliveryReport/deliveryReport.html',
+            controllerAs: 'vm'
+        }).when('/fuel', {
+            controller: 'FuelReportController',
+            templateUrl: viewBase + '/productCategory/fuelReport/fuelReport.html',
+            controllerAs: 'vm'
+        }).when('/machineServices', {
+            controller: 'MachineServicesController',
+            templateUrl: viewBase + '/productCategory/machineServices/machineServices.html',
+            controllerAs: 'vm'
+        }).when('/productionAndConcrete', {
+            controller: 'productionAndConcreteController',
+            templateUrl: viewBase + '/productCategory/productionAndConcrete/productionAndConcrete.html',
+            controllerAs: 'vm'
+        }).when('/steelWorker', {
+            controller: 'SteelWorkerController',
+            templateUrl: viewBase + '/productCategory/steelWorker/steelWorker.html',
             controllerAs: 'vm'
         }).otherwise({ redirectTo: '/' });
     }

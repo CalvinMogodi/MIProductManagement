@@ -5,6 +5,8 @@
         /* jshint validthis:true */
         var vm = this;
         var ref = new Firebase(firebaseUrl);
+        vm.heading = "Bricklayer";
+        vm.icon = "add_box";
        
         vm.gridOptions = {
             columnDefs: [

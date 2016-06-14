@@ -5,6 +5,8 @@
         var ref = new Firebase(firebaseUrl);
         var vm = this;
         vm.allProducts = [];
+        vm.heading = "Products";
+        vm.icon = "add_box";
        
         vm.showProducts = false;
 

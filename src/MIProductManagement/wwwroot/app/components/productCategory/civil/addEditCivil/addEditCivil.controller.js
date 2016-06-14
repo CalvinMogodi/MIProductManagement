@@ -20,29 +20,37 @@
         };
 
         $scope.create = function (civil) {
-            var civils = $firebaseArray(ref);
 
-            var today = $filter('date')(new Date(), 'yyyy-MM-dd');
-            var newRecord = {
-                productDescription: civil.productDescription,
-                quantity: civil.quantity,
-                createdDate: today.toString(),
-            };
-            civils.$add(newRecord);
-            modal.hide();
+            $scope.formSubmitted = true;
+
+            if ($scope.bricklayerForm.$valid) {
+                var civils = $firebaseArray(ref);
+
+                var today = $filter('date')(new Date(), 'yyyy-MM-dd');
+                var newRecord = {
+                    productDescription: civil.productDescription,
+                    quantity: civil.quantity,
+                    createdDate: today.toString(),
+                };
+                civils.$add(newRecord);
+                modal.hide();}
         }
 
-        $scope.Update = function (civil) {
-            var editRef = new Firebase(firebaseUrl + "/Civil/" + civil.$id);
-            var oldCivil = $firebaseObject(editRef);
+            $scope.Update = function (civil) {
+                $scope.formSubmitted = true;
 
-            oldCivil.$id = civil.$id;
-            oldCivil.productDescription = civil.productDescription;
-            oldCivil.quantity = civil.quantity;
-            oldCivil.createdDate = civil.createdDate;
+                if ($scope.bricklayerForm.$valid) {
+                    var editRef = new Firebase(firebaseUrl + "/Civil/" + civil.$id);
+                    var oldCivil = $firebaseObject(editRef);
 
-            oldCivil.$save();
-            modal.hide();
+                    oldCivil.$id = civil.$id;
+                    oldCivil.productDescription = civil.productDescription;
+                    oldCivil.quantity = civil.quantity;
+                    oldCivil.createdDate = civil.createdDate;
+
+                    oldCivil.$save();
+                    modal.hide();
+                }
         }
     }
 

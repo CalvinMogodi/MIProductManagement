@@ -10,22 +10,31 @@
         </div>
     </md-toolbar>
     <md-content class="md-padding">
-        <form name="vm.blockMakerForm">
+        <form name="blockMakerForm">
             <div layout-gt-md="row" layout-md="column">
                 <div flex>
                     <md-input-container class="md-block">
                             <label>Select Product</label>
-                            <md-select ng-model="blockMaker.productDescription" required>
+                            <md-select ng-model="blockMaker.productDescription" required name="productDescription">
                                 <md-option value="{{product.description}}" ng-repeat="product in products">{{product.description}}</md-option>
                             </md-select>
+                        <div ng-messages="blockMakerForm.productDescription.$error" ng-if="blockMakerForm.productDescription.$dirty || formSubmitted">
+                            <div ng-message="required">Please select product description</div>
+                        </div>
                         </md-input-container>
                         <md-input-container class="md-block">
                             <label>Total</label>
-                            <input ng-model="blockMaker.total" required name="total" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                            <input ng-model="blockMaker.total" required name="total" type="number" min="0"/>
+                            <div ng-messages="blockMakerForm.total.$error" ng-if="blockMakerForm.total.$dirty || formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
                         </md-input-container>
                         <md-input-container class="md-block">
                             <label>Used</label>
-                            <input ng-model="blockMaker.used" required name="used" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                            <input ng-model="blockMaker.used" required name="used" type="number" min="0" />
+                            <div ng-messages="blockMakerForm.used.$error" ng-if="blockMakerForm.used.$dirty || formSubmitted">
+                                <div ng-message="required">The field above is required</div>
+                            </div>
                         </md-input-container>
         </div>
             </div>

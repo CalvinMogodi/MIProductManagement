@@ -10,18 +10,24 @@
         </div>
     </md-toolbar>
     <md-content class="md-padding">
-        <form name="vm.bricklayerForm">
+        <form name="civilForm">
             <div layout-gt-md="row" layout-md="column">
                 <div flex>
                     <md-input-container class="md-block">
                         <label>Select Product</label>
-                        <md-select ng-model="civil.productDescription" required>
+                        <md-select ng-model="civil.productDescription" required name="productDescription">
                             <md-option value="{{product.description}}" ng-repeat="product in products">{{product.description}}</md-option>
                         </md-select>
+                        <div ng-messages="civilForm.productDescription.$error" ng-if="civilForm.productDescription.$dirty || formSubmitted">
+                            <div ng-message="required">Please select product description</div>
+                        </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Quantity</label>
-                        <input ng-model="civil.quantity" required name="total" ng-pattern="/^[a-zA-Z0-9\s]*$/" />
+                        <input ng-model="civil.quantity" required name="quantity" type="number" min="0" />
+                        <div ng-messages="civilForm.quantity.$error" ng-if="civilForm.quantity.$dirty || formSubmitted">
+                            <div ng-message="required">The field above is required</div>
+                        </div>
                     </md-input-container>
                 </div>
             </div>

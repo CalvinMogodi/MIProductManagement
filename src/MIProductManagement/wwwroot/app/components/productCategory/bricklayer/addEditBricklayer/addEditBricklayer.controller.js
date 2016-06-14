@@ -20,29 +20,37 @@
         };
 
         $scope.create = function (bricklayer) {
-            var bricklayers = $firebaseArray(ref);
-           
-            var today = $filter('date')(new Date(), 'yyyy-MM-dd');
-            var newRecord = {
-                productDescription: bricklayer.productDescription,
-                quantity: bricklayer.quantity,
-                createdDate: today.toString(),
-            };
-           bricklayers.$add(newRecord);
-            modal.hide();
+            $scope.formSubmitted = true;
+
+            if ($scope.bricklayerForm.$valid) {
+                var bricklayers = $firebaseArray(ref);
+
+                var today = $filter('date')(new Date(), 'yyyy-MM-dd');
+                var newRecord = {
+                    productDescription: bricklayer.productDescription,
+                    quantity: bricklayer.quantity,
+                    createdDate: today.toString(),
+                };
+                bricklayers.$add(newRecord);
+                modal.hide();
+            }
         }
 
         $scope.Update = function (bricklayer) {
-            var editRef = new Firebase(firebaseUrl + "/Bricklayer/" + bricklayer.$id);
-            var oldBricklayer = $firebaseObject(editRef);
+            $scope.formSubmitted = true;
 
-            oldBricklayer.$id = bricklayer.$id;
-            oldBricklayer.productDescription = bricklayer.productDescription;
-            oldBricklayer.quantity = bricklayer.quantity;
-            oldBricklayer.createdDate = bricklayer.createdDate;
+            if ($scope.bricklayerForm.$valid) {
+                var editRef = new Firebase(firebaseUrl + "/Bricklayer/" + bricklayer.$id);
+                var oldBricklayer = $firebaseObject(editRef);
 
-            oldBricklayer.$save();
-            modal.hide();
+                oldBricklayer.$id = bricklayer.$id;
+                oldBricklayer.productDescription = bricklayer.productDescription;
+                oldBricklayer.quantity = bricklayer.quantity;
+                oldBricklayer.createdDate = bricklayer.createdDate;
+
+                oldBricklayer.$save();
+                modal.hide();
+            }
         }
     }
     angular.module('MIPM').controller('AddEditBricklayerController', AddEditBricklayerController);

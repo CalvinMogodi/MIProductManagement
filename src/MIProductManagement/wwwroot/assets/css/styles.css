@@ -8319,8 +8319,10 @@ overflow: hidden;
     margin-top: 10px; }
 
 .md-login {
-  background: url("../img/login_background.png") no-repeat center center !important;
-  background-size: cover !important; }
+  /*background: url("../img/login_background.png") no-repeat center center !important;*/
+  background-size: cover !important; 
+   background-color:white; 
+}
   .md-login md-input-container .md-input {
     border-color: #fff !important;
     color: #fff !important; }
