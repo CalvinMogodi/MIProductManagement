@@ -120,7 +120,7 @@
         };
        
         vm.filter = function (filter) {
-            var list = vm.blockMakers;
+            var list = angular.copy(vm.blockMakers);
             var results = [];
             if (filter.productDescription) {
                 for (var i = 0; i < list.length; i++) {
@@ -149,7 +149,9 @@
             addTotalToTalbe(results);
         }
         vm.clear = function () {
-            vm.filter = undefined;
+            vm.filter.productDescription = undefined;
+            vm.filter.toDate = undefined;
+            vm.filter.fromDate = undefined;
         }
         
     }

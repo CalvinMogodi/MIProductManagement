@@ -77,7 +77,7 @@
             });
         }
         vm.filter = function (filter) {
-            var list = vm.civils;
+            var list = angular.copy(vm.civils);
             var results = [];
             if (filter.productDescription) {
                 for (var i = 0; i < list.length; i++) {
@@ -106,7 +106,9 @@
             vm.gridOptions.data = results;
         }
         vm.clear = function () {
-            vm.filter = undefined;
+            vm.filter.productDescription = undefined;
+            vm.filter.toDate = undefined;
+            vm.filter.fromDate = undefined;
         }
     }
 

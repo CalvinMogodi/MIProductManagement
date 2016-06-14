@@ -29,11 +29,11 @@
             enableGridMenu: true,
             enableSelectAll: false,
             enableSorting: true,
-            exporterCsvFilename: 'Delivery.csv',
+            exporterCsvFilename: 'Fuel.csv',
             exporterPdfDefaultStyle: { fontSize: 9 },
             exporterPdfTableStyle: { margin: [30, 30, 30, 30] },
             exporterPdfTableHeaderStyle: { fontSize: 10, bold: true, italics: true, color: 'red' },
-            exporterPdfHeader: { text: "Delivery", style: 'headerStyle' },
+            exporterPdfHeader: { text: "Fuel", style: 'headerStyle' },
             exporterPdfFooter: function (currentPage, pageCount) {
                 return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
             },
@@ -79,7 +79,7 @@
             });
         }
         vm.filter = function (filter) {
-            var list = vm.fuels;
+            var list = angular.copy(vm.fuels);
             var results = [];
             if (filter.productDescription) {
                 for (var i = 0; i < list.length; i++) {
@@ -108,7 +108,9 @@
             vm.gridOptions.data = results;
         }
         vm.clear = function () {
-            vm.filter = undefined;
+            vm.filter.productDescription = undefined;
+            vm.filter.toDate = undefined;
+            vm.filter.fromDate = undefined;
         }
     }
 
