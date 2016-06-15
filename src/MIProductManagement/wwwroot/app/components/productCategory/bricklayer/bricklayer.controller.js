@@ -20,6 +20,7 @@
               }
             ],
             exporterSuppressColumns: ['Actions'],
+            rowHeight:35,
             enableColumnMenus: false,
             enableVerticalScrollbar: 0,
             enableHorizontalScrollbar: 0,

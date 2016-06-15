@@ -28,6 +28,7 @@
             exporterSuppressColumns: ['Actions'],
             enableColumnMenus: false,
             enableVerticalScrollbar: 0,
+            rowHeight: 35,
             enableHorizontalScrollbar: 0,
             exporterCsvColumnSeparator: ';',
             enableGridMenu: true,
