@@ -8,16 +8,11 @@
         vm.heading = "Block Maker";
         vm.icon = "add_box";
 
-        $scope.gridOptions = {
+        vm.gridOptions = {
             columnDefs: [
-              { field: 'productDescription', displayName: 'Product Description', width: '300' },
-              { field: 'total', displayName: 'Total', width: '90' ,cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
-                  if (grid.getCellValue(row,col) == 1) {
-                      return 'blue';
-                  }
-                  return 'green';
-              }},
-              { field: 'used', displayName: 'Used', width: '90'},
+              { field: 'productDescription', displayName: 'Product Description'},
+              { field: 'total', displayName: 'Total'},
+              { field: 'used', displayName: 'Used'},
               { field: 'createdDate', displayName: 'Date Created'},
             {
                 field: 'Actions', displayName: 'Actions', cellTemplate:
@@ -55,38 +50,12 @@
             }
         };
 
-        var addTotalToTalbe = function (results) {
-            var used = 0, total = 0;
-
-            for (var i = 0; i < results.length; i++) {
-                used = parseInt(used + parseInt(results[i].used));
-                total = parseInt(total + parseInt(results[i].total));
-            }
-
-            var emptyRow = {
-                productDescription: '',
-                total: '',
-                used: '',
-                createdDate: '',
-                Actions: '',
-            };
-            var TotalRow = {
-                productDescription: 'Total',
-                total: total,
-                used: used,
-                createdDate: '',
-                Actions: undefined,
-            };
-            results.push(emptyRow);
-            results.push(TotalRow);
-            $scope.gridOptions.data = results;
-        }
-
+       
         init();
         function init() {
             vm.blockMakers = $firebaseArray(ref.child('BlockMaker'));
             vm.blockMakers.$loaded(function (data) {
-                addTotalToTalbe(data);
+                vm.gridOptions.data = data;
                 ProductCategoryService.loadProducts('blockMaker');
                 vm.products = ProductCategoryService.products;
             })
@@ -108,17 +77,6 @@
             modal.show(templateUrl, 'AddEditBlockMakerController').then(function () {
             });
         }
-
-        vm.export = function () {
-            $scope.export_format = 'csv';
-            if ($scope.export_format == 'csv') {
-                var myElement = angular.element(document.querySelectorAll(".custom-csv-link-location"));
-                $scope.gridApi.exporter.csvExport('all', 'all');
-            } else if ($scope.export_format == 'pdf') {
-                $scope.gridApi.exporter.pdfExport($scope.export_row_type, $scope.export_column_type);
-            };
-        };
-       
         vm.filter = function (filter) {
             var list = angular.copy(vm.blockMakers);
             var results = [];
@@ -145,8 +103,8 @@
                         }
                     }
                     }
-                }
-            addTotalToTalbe(results);
+            }
+            vm.gridOptions.data = results;
         }
         vm.clear = function () {
             vm.filter.productDescription = undefined;

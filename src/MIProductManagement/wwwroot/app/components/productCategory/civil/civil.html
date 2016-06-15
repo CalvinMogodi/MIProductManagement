@@ -5,40 +5,39 @@
                  add-new-button-function="vm.newRecord()">
 </dir-page-header>
 
+
 <md-content class="main-content md-padding page-content transparent">
-    <md-content class="box-shadow">
-        <div>
-            <form name="filterForm">
-                <div flex layout-gt-md="row" layout="column">
-                    <md-input-container class="md-block">
+    <md-content class="md-padding">
+        <form name="filterForm">
+            <div layout-gt-md="row" layout-md="column">
+                <div flex>
+                    <md-input-container>
                         <label>Select Product</label>
-                        <md-select ng-model="vm.filter.productDescription">
+                        <md-select ng-model="vm.filter.productDescription" style="display:inherit">
                             <md-option value="{{product.description}}" ng-repeat="product in vm.products">{{product.description}}</md-option>
                         </md-select>
                     </md-input-container>
-                    <div flex="5" hide-md></div><!-- gutter -->
+                </div>
+                <div flex>
                     <div flex flex-gt-md="33" layout="row" class="md-block">
-                        <div flex="initial" class="padding-top-32">
-                            <label class="padding-right-16">From Date</label>
-                        </div>
-                        <md-datepicker flex="auto" md-min-date="minDate" ng-required="vm.filter.toDate != undefined" class="md-datepicker-custom md-hide-overflow" ng-model="vm.filter.fromDate" required md-placeholder="Enter date"></md-datepicker>
-                    </div>
-                    <div flex="5" hide-md></div><!-- gutter -->
-                    <div flex flex-gt-md="33" layout="row" class="md-block">
-                        <div flex="initial" class="padding-top-32">
-                            <label class="padding-right-16">To Date</label>
-                        </div>
-                        <md-datepicker flex="auto" md-min-date="minDate" ng-required="vm.filter.fromDate != undefined" class="md-datepicker-custom md-hide-overflow" ng-model="vm.filter.toDate" required md-placeholder="Enter date"></md-datepicker>
+                        <md-datepicker flex="auto" ng-required="vm.filter.fromDate != undefined" class="md-datepicker-custom md-hide-overflow" ng-model="vm.filter.toDate" required md-placeholder="To Date"></md-datepicker>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div flex layout="row" layout-align="end end">
-            <md-button class="md-raised md-primary" layout-align="start start" ng-click="vm.clear()">Clear</md-button>
-            <md-button class="md-raised md-primary" ng-disabled="filterForm.$invalid" ng-click="vm.filter(vm.filter)">Filter</md-button>
-        </div>
+                <div flex>
+                    <div flex="5" hide-md></div><!-- gutter -->
+                    <div flex flex-gt-md="33" layout="row" class="md-block">
+                        <md-datepicker flex="auto" ng-required="vm.filter.fromDate != undefined" class="md-datepicker-custom md-hide-overflow" ng-model="vm.filter.toDate" required md-placeholder="To Date"></md-datepicker>
+                    </div>
+                </div>
+                <div flex="5" hide-md></div><!-- gutter -->
+            </div>
+            <div flex layout="row" layout-align="end end">
+                <md-button class="md-raised md-primary" layout-align="start start" ng-click="vm.clear()">Clear</md-button>
+                <md-button class="md-raised md-primary" ng-disabled="filterForm.$invalid" ng-click="vm.filter(vm.filter)">Filter</md-button>
+            </div>
+        </form>
     </md-content>
     <md-content class="box-shadow">
-        <div ui-grid="vm.gridOptions" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid"></div>       
+        <div ui-grid="vm.gridOptions" ui-grid-edit ui-grid-selection ui-grid-exporter class="grid"></div>
     </md-content>
 </md-content>
