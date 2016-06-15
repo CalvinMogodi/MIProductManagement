@@ -11,7 +11,7 @@
             <form name="filterForm">
                 <div layout-gt-md="row" layout-md="column">
                     <div flex>
-                        <md-input-container>
+                        <md-input-container style="display:inline !important">
                             <label>Select Product</label>
                             <md-select ng-model="vm.filter.productDescription" style="display:inherit">
                                 <md-option value="{{product.description}}" ng-repeat="product in vm.products">{{product.description}}</md-option>
