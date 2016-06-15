@@ -8203,7 +8203,7 @@ overflow: hidden;
   background-color: #00041e;
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.5); }
   .md-login .input-area .logo {
-    background: url(../img/login-bidvest-logo.png) no-repeat center center;
+    background: url(../img/Marche_International_logo.png) no-repeat center center;
     background-size: contain;
     background-position: top center;
     height: 45px;
@@ -11861,7 +11861,7 @@ md-sidenav.md-locked-open {
   min-width: 100%; }
 .md-login .image-area {
   background: url("../img/login_background.png") no-repeat !important;
-  background-size: contain !important; }
+  background-size: cover !important; }
 .md-login .input-area {
   /*background: url("../img/login_background.png") no-repeat center center;*/
   background-size: inherit;

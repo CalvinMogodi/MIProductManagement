@@ -27,9 +27,9 @@
         function link(scope, element, attrs) {
             scope.searchTags = [];
 
-            //window.setInterval(function () {
-            //    scope.currentTime = new Date()
-            //}, 1000);
+            window.setInterval(function () {
+                scope.currentTime = new Date()
+            }, 1000);
 
 
             scope.remove = function (item) {

@@ -9,11 +9,11 @@
 </head>
 <body ng-controller="indexController" ng-class="{'md-login' : currentUrl === '/login'}">
    
-    <div layout="row" ng-class="{'layout-fill' : currentUrl === '/login', 'main-wrap' : currentUrl !== '/login',}" class="layout-fill">
+    <div layout="row" ng-class="{'layout-fill' : currentUrl === '/login'}" class="layout-fill" style="height:100%">
 
         <md-sidenav md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" class="md-whiteframe-z2 md-sidenav-left gt-md-closed md-locked-open" ng-hide="currentUrl === '/login'">
             <div flex layout="column" layout-fill>
-                <img src="assets/img/marche_international_logo.png" height="55" />
+                <img src="assets/img/marche_international_logo.png" />
 
                 <div class="md-padding profile-area margin-top-16" layout="row" layout-align="center center">
                     <div flex layout="row">
