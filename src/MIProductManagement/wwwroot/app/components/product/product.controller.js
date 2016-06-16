@@ -5,7 +5,7 @@
         var ref = new Firebase(firebaseUrl);
         var vm = this;
         vm.allProducts = [];
-        $scope.showProducts = false;
+        vm.showProducts = false;
         vm.heading = "Products";
         vm.icon = "add_box";
        
@@ -16,7 +16,7 @@
         }
 
         vm.loadProducts = function (productCategory) {
-            $scope.showProducts = true;
+            vm.showProducts = true;
             vm.products = [];
             for (var i = 0; i < vm.allProducts.length; i++) {
                 var product = vm.allProducts[i];

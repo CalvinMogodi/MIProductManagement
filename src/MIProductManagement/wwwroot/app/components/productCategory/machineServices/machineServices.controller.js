@@ -5,7 +5,7 @@
         /* jshint validthis:true */
         var vm = this;
         vm.heading = "Machine Service";
-        vm.icon = "add_box";
+        vm.icon = "settings_input_composite";
         var ref = new Firebase(firebaseUrl);
 
         vm.gridOptions = {

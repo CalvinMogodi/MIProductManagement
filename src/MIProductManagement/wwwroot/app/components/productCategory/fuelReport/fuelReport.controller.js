@@ -5,7 +5,7 @@
         /* jshint validthis:true */
         var vm = this;
         vm.heading = "Fuel";
-        vm.icon = "add_box";
+        vm.icon = "local_gas_station";
         var ref = new Firebase(firebaseUrl);
 
         vm.gridOptions = {

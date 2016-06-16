@@ -1,14 +1,22 @@
 ﻿<dir-page-header heading="vm.heading"
                  icon="vm.icon"
                  show-search="true"
-                 show-new-button="showProducts"
-                 add-new-button-function="vm.newProduct()">
+                 show-new-button="false"
+                 add-new-button-function="vm.newProduct()"
+                 ng-if="vm.showProducts == false">
+</dir-page-header>
+<dir-page-header heading="vm.heading"
+                 icon="vm.icon"
+                 show-search="true"
+                 show-new-button="true"
+                 add-new-button-function="vm.newProduct()"
+                 ng-if="vm.showProducts == true">
 </dir-page-header>
 
 <md-content class="main-content md-padding page-content transparent">
-    <md-content>
-        <div>
-            <div flex layout-gt-md="row" layout="column">
+    <md-content class="md-padding" flex style="height:400px" >       
+        <div layout-gt-md="row" layout-md="column">
+            <div >
                 <md-input-container>
                     <label>Select Product Category</label>
                     <md-select ng-model="vm.productCategory" ng-change="vm.loadProducts(vm.productCategory)">
@@ -25,36 +33,35 @@
                 <div flex="5" hide-md></div><!-- gutter -->
             </div>
         </div>
-    </md-content>
-    <md-content ng-if="showProducts">
-        <md-data-table-container ng-if="vm.products.length > 0">
-            <table md-data-table md-progress="deferred">
-                <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
-                    <tr>
-                        <th name="Product Description"></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="product in  vm.products" class="hover">
-                        <td>{{product.description}}</td>
-                        <td class="md-table-button">
-                            <md-button class="md-icon-button" ng-click="vm.deleteProduct(product)">
-                                <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
-                            </md-button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </md-data-table-container>
-        <div class="md-table-placeholder" layout="row" layout-align="center center" ng-if="vm.products.length == 0">
-            <div layout="column" layout-align="center center">
-                <h3 class="no-margin"><i class="material-icons">payment</i></h3>
-                <p class="no-margin md-font-size-xs"><strong>No</strong> Products</p>
+       
+
+        <div ng-if="vm.showProducts">
+            <md-data-table-container ng-if="vm.products.length > 0">
+                <table md-data-table md-progress="deferred">
+                    <thead md-order="query.order" md-trigger="onOrderChange" class="color-blue color-medium-grey">
+                        <tr>
+                            <th name="Product Description"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in  vm.products" class="hover">
+                            <td>{{product.description}}</td>
+                            <td class="md-table-button">
+                                <md-button class="md-icon-button" ng-click="vm.deleteProduct(product)">
+                                    <md-icon md-font-icon="material-icons" class="md-font material-icons">delete</md-icon>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+            <div class="md-table-placeholder" layout="row" layout-align="center center" ng-if="vm.products.length == 0">
+                <div layout="column" layout-align="center center">
+                    <h3 class="no-margin"><i class="material-icons">payment</i></h3>
+                    <p class="no-margin md-font-size-xs"><strong>No</strong> Products</p>
+                </div>
             </div>
-        </div>
-        <div flex layout="row" layout-align="end end">
-            <md-button class="md-primary md-primary-custom" ng-click="vm.newProduct()">New Product</md-button>
         </div>
     </md-content>
 </md-content>

@@ -5,7 +5,7 @@
         /* jshint validthis:true */
         var vm = this;
         vm.heading = "Production And Concrete";
-        vm.icon = "add_box";
+        vm.icon = "format_color_fill";
         var ref = new Firebase(firebaseUrl);
 
         vm.gridOptions = {

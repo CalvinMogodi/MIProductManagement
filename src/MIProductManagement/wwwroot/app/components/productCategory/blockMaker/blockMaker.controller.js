@@ -6,7 +6,7 @@
         var vm = this;
         var ref = new Firebase(firebaseUrl);
         vm.heading = "Block Maker";
-        vm.icon = "add_box";
+        vm.icon = "business";
 
         vm.gridOptions = {
             columnDefs: [

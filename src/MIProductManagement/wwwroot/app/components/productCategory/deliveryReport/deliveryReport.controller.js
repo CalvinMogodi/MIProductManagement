@@ -5,7 +5,7 @@
         /* jshint validthis:true */
         var vm = this;
         vm.heading = "Delivery";
-        vm.icon = "add_box";
+        vm.icon = "local_shipping";
         var ref = new Firebase(firebaseUrl);
 
         vm.gridOptions = {
