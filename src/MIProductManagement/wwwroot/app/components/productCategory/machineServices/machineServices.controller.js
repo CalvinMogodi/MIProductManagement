@@ -36,20 +36,20 @@
             enableSorting: true,
             exporterCsvFilename: 'Machine.csv',
             exporterPdfDefaultStyle: { fontSize: 9 },
-            exporterPdfTableStyle: { margin: [30, 30, 30, 30] },
+            exporterPdfTableStyle: { margin: [0, 30, 30, 30] },
             exporterPdfTableHeaderStyle: { fontSize: 10, bold: true, italics: true, color: 'red' },
-            exporterPdfHeader: { text: "Machine", style: 'headerStyle' },
+            exporterPdfHeader: { text: "MACHINE SERVICE REPORT", style: 'headerStyle' },
             exporterPdfFooter: function (currentPage, pageCount) {
                 return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
             },
             exporterPdfCustomFormatter: function (docDefinition) {
-                docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
-                docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
+                docDefinition.styles.headerStyle = { fontSize: 22, bold: true, alignment: 'center' };
+                docDefinition.styles.footerStyle = { fontSize: 10, bold: true, alignment: 'center' };
                 return docDefinition;
             },
             exporterPdfOrientation: 'portrait',
             exporterPdfPageSize: 'LETTER',
-            // exporterPdfMaxGridWidth: 500,
+            exporterPdfMaxGridWidth: 500,
             exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
             onRegisterApi: function (gridApi) {
                 vm.gridApi = gridApi;

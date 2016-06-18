@@ -12,12 +12,14 @@
 
         <md-sidenav md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" class="md-whiteframe-z2 md-sidenav-left gt-md-closed md-locked-open" ng-hide="currentUrl === '/login'">
             <div flex layout="column" layout-fill>
-                <img src="assets/img/marche_international_logo.png" />
-
-                <div class="md-padding profile-area margin-top-16" layout="row" layout-align="center center">
+                <div class="md-padding profile-area margin-top-16" layout="column" layout-align="center center">
                     <div flex layout="row">
-                        <img src="assets/img/placeholder.png" />
+                        <img class="profile-picture" src={{profileImage}} />
                         <div class="online"></div>
+                    </div>
+                    <div flex layout="column" layout-align="center center">
+                        <p class="md-name">{{displayName}}</p>
+                        <p class="md-email">{{idNumber}}</p>
                     </div>
                 </div>
 

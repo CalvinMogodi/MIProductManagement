@@ -7,14 +7,13 @@
         vm.title = 'indexController';
         var ref = new Firebase("https://eoh-intranet.firebaseio.com/Users");
         vm.Users = $firebaseArray(ref);
-
+        vm.ProfilePicture = "";
         // vm.Users.$add({ name: 'Denzil' });
 
         LoginService.setLoginDetails();
 
         if ($sessionStorage.isUserAuthenticated) {
             vm.userAuthenticated = true;
-
         }
         else {
             vm.userAuthenticated = false;

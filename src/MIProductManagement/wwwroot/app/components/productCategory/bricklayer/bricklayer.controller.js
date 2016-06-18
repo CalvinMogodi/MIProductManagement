@@ -30,20 +30,22 @@
             enableSorting: true,
             exporterCsvFilename: 'Bricklayer Report.csv',
             exporterPdfDefaultStyle: { fontSize: 9 },
-            exporterPdfTableStyle: { margin: [30, 30, 30, 30] },
+            exporterPdfTableStyle: { margin: [0, 30, 30, 30] },
             exporterPdfTableHeaderStyle: { fontSize: 10, bold: true, italics: true, color: 'red' },
-            exporterPdfHeader: { text: "Bricklayer Report", style: 'headerStyle' },
+            exporterPdfHeader: { text: "BRICK LAYER REPORT", style: 'headerStyle' },
+            exporterPdfHeaderStyle: { alignment: 'center' },
             exporterPdfFooter: function (currentPage, pageCount) {
                 return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
             },
+            //exporterPdfHeader: { text: "My Header", image: "https://cms-assets.tutsplus.com/uploads/users/442/posts/22391/image/fire.png" },
             exporterPdfCustomFormatter: function (docDefinition) {
-                docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
-                docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
+                docDefinition.styles.headerStyle = { fontSize: 22, bold: true, alignment: 'center' };
+                docDefinition.styles.footerStyle = { fontSize: 10, bold: true, alignment: 'center' };
                 return docDefinition;
             },
             exporterPdfOrientation: 'portrait',
             exporterPdfPageSize: 'LETTER',
-           // exporterPdfMaxGridWidth: 500,
+            exporterPdfMaxGridWidth: 500,
             exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
             onRegisterApi: function (gridApi) {
                 vm.gridApi = gridApi;

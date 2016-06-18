@@ -7,7 +7,7 @@
         vm.title = 'indexController';
         var ref = new Firebase("https://eoh-intranet.firebaseio.com");
         vm.login = {};
-       
+
         $rootScope.profileImage = 'assets/img/placeholder.png';
 
         $scope.login = function (credentials) {
@@ -32,27 +32,46 @@
             });
         }
 
-        $scope.loginWithFacebook = function (credentials) {
 
-            ref.authWithOAuthPopup("facebook", function (error, authData) {
+        $scope.loginWithFacebook = function (credentials) {
+            ref.authWithOAuthPopup("google", function (error, authData) {
                 if (error) {
                     console.log("Login Failed!", error);
                 } else {
-                    $scope.$apply(function (){
-                        console.log("Authenticated successfully with payload:", authData);
+                    $scope.$apply(function () {
+                    console.log("Authenticated successfully with payload:", authData);
                     $sessionStorage.isUserAuthenticated = true;
                     $sessionStorage.userType = 'employee';
-                    $sessionStorage.displayName = authData.facebook.displayName;
-                    $sessionStorage.profileImage = authData.facebook.profileImageURL;
-                    $sessionStorage.idNumber = authData.facebook.cachedUserProfile.id;
+                    $sessionStorage.displayName = authData.google.displayName;
+                    $sessionStorage.profileImage = authData.google.profileImageURL;
                     LoginService.setLoginDetails();
                     $location.path('/dashboard');
-                    });
-                   
+                   });
                 }
-
             });
         }
+
+        //$scope.loginWithFacebook = function (credentials) {
+        //    ref.authWithOAuthPopup("facebook", function (error, authData) {
+        //        if (error) {
+        //            console.log("Login Failed!", error);
+        //        } else {
+
+        //            $scope.$apply(function () {
+        //                console.log("Authenticated successfully with payload:", authData);
+        //                $sessionStorage.isUserAuthenticated = true;
+        //                $sessionStorage.userType = 'employee';
+        //                $sessionStorage.displayName = authData.facebook.displayName;
+        //                $sessionStorage.profileImage = authData.facebook.profileImageURL;
+        //                $sessionStorage.idNumber = authData.facebook.cachedUserProfile.id;
+        //                LoginService.setLoginDetails();
+        //                $location.path('/dashboard');
+        //            });
+
+        //        }
+
+        //    });
+        //}
 
     }
 
